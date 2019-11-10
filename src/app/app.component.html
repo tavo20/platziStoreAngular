@@ -2,6 +2,14 @@
 <input type="text" [(ngModel)]="title">
 
 <div *ngIf="title === 'Gustavo'"> este es un div</div>
+
+<div [ngSwitch]='title'>
+    <p *ngSwitchCase="'Gustavo'">este es Gustavo</p>
+    <p *ngSwitchCase="'Nicolas'">este es Nicolas</p>
+    <p *ngSwitchCase="'Gissel'">este es Gissel</p>
+    <p *ngSwitchDefault>No hay match</p>
+</div>
+
 <button (click)="addItem()">Add item</button>
 <ul>
     <li *ngIf="items.length === 0">La lista esta vacia</li>
