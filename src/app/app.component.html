@@ -1,6 +1,5 @@
 {{title}}
 <input type="text" [(ngModel)]="title">
-
 <div *ngIf="title === 'Gustavo'"> este es un div</div>
 
 <div [ngSwitch]='title'>
@@ -19,9 +18,10 @@
     </li>
 </ul>
 
-<div *ngFor="let product of products">
-    {{ product.title }}
-    <img [src]="product.image " alt="">
-    {{ product.price}}
+<div class="product-grid">
+    <!-- {{ product.title }}
+    <img [src]="product.image " alt=""> -->
+<app-product *ngFor="let product of products" (productClicked)='clickProduct($event)' [product]="product" ></app-product>
+   
 </div>
 
