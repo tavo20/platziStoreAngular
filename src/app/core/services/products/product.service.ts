@@ -8,7 +8,6 @@ import { environment } from './../../../../environments/environment'
   providedIn: 'root'
 })
 export class ProductService {
- 
   constructor(
     private http: HttpClient
   ) { }
@@ -24,4 +23,11 @@ export class ProductService {
   createProduct(product: Product){
     return this.http.post(`${environment.url_api}`, product);
   }
+  updateProduct(id: string, changes: Partial<Product>) {
+    return this.http.put(`${environment.url_api}${id}`, changes);
+  }
+  deleteProduct(id: string) {
+    return this.http.delete(`${environment.url_api}${id}`);
+  };
+
 }

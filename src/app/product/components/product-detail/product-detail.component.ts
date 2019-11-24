@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
         this.producto = producto;
       }, (err) => {console.error(`errro al obtener la información del producto ${err}`)});
   }
-  createProduct(){
+  createProduct() {
     const newProduct: Product = {
       id: '222',
       title: 'Producto desde angular',
@@ -45,5 +45,23 @@ export class ProductDetailComponent implements OnInit {
 
       },(err) => {console.error(`error al guardar el producto`)});
   }
+  updateProduct(){
+    const updateProduct: Partial<Product> = {
+      price: 8888888,
+      description: 'Edición Product'
+    };
+    this.productService.updateProduct('222', updateProduct)
+      .subscribe(() => {
+
+      },(err) => {console.error(`error al guardar el producto`)});
+  }
+  deleteProduct() {
+    this.productService.deleteProduct('222')
+      .subscribe(() => {
+
+      },(err) => {console.error(`èrror al borrar el producto ${err}`)})
+
+  }
+
 
 }
