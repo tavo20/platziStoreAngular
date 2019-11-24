@@ -44,12 +44,11 @@ const routes: Routes = [
   {
     path: 'demo',
     loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
-
   },
-  // {
-  //   path: 'banner',
-  //   component: BannerComponent
-  // },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
   {
     path: '**',
     component: PageNotFoundComponent
