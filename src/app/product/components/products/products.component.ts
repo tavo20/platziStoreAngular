@@ -14,11 +14,12 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productService.getProductos()
-      .subscribe((productos)=>{
+   const x =  this.productService.getProductos()
+      .subscribe((productos) => {
         this.products = (productos);
+        x.unsubscribe();
         console.log(productos);
-      },(err)=>{console.error(`error al obtener los productos ${err}`)})
+      }, (err) => {console.error(`error al obtener los productos ${err}`)});
   }
   clickProduct(id: number) {
     console.log(`product ${id}`);

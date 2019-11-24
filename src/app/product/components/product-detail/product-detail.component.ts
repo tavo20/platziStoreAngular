@@ -20,9 +20,30 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       console.log(params);
       const id = params.id;
-        this.producto = this.productService.getProducto(id)
-       console.log(this.producto);
+      this.fetchProduct(id);
+      //   this.producto = this.productService.getProducto(id)
+      //  console.log(this.producto);
     });
+  }
+  fetchProduct(id: string){
+    this.productService.getProducto(id)
+      .subscribe((producto) => {
+        console.log(producto);
+        this.producto = producto;
+      }, (err) => {console.error(`errro al obtener la información del producto ${err}`)});
+  }
+  createProduct(){
+    const newProduct: Product = {
+      id: '222',
+      title: 'Producto desde angular',
+      image: 'assets/images/pin.png',
+      price: 35000,
+      description: 'Nuevo producto'
+    };
+    this.productService.createProduct(newProduct)
+      .subscribe(() => {
+
+      },(err) => {console.error(`error al guardar el producto`)});
   }
 
 }
