@@ -31,6 +31,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 // import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatIconModule } from '@angular/material/icon';
 // import { MatButtonModule } from '@angular/material/button';
 
@@ -56,7 +57,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatMenuModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    MatFormFieldModule
   ],
   exports: [
     MatButtonModule,
@@ -74,7 +76,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatMenuModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule { }
