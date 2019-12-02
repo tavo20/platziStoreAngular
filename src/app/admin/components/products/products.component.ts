@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(123);
     this.fetchProduts();
   }
   fetchProduts() {
@@ -30,7 +31,7 @@ export class ProductsComponent implements OnInit {
       .subscribe(() => {
         console.log('Elimina');
         for (let i = 0; i < this.productos.length; i++) {
-            if(this.productos[i].id == id){
+            if (this.productos[i].id == id) {
               this.productos.splice(i, 1);
             }
         }
