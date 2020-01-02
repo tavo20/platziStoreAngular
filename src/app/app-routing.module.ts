@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import {ProductComponent} from './product/components/product/product.component';
+import { ProductComponent } from './product/components/product/product.component';
 // import {HomeComponent} from './home/components/home/home.component';
-import {ProductsComponent} from './product/components/products/products.component';
+import { ProductsComponent } from './product/components/products/products.component';
 // import {ContactComponent} from './contact/components/contact/contact.component';
 // import {DemoComponent} from './demo/components/demo/demo.component';
 // import {BannerComponent} from './home/components/banner/banner.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ProductDetailComponent} from './product/components/product-detail/product-detail.component';
-import {LayoutComponent} from './layout/layout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './product/components/product-detail/product-detail.component';
+import { LayoutComponent } from './layout/layout.component';
 import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
@@ -55,7 +55,12 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '**',
