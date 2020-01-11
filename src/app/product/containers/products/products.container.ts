@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../../product.model';
-import { ProductService } from 'src/app/core/services/products/product.service';
+import { ProductService } from '@core/services/products/product.service';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './products.container.html',
+  styleUrls: ['./products.container.scss']
 })
-export class ProductsComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class ProductsContainer implements OnInit {
   products: Product[] = [];
   constructor(
     private productService: ProductService

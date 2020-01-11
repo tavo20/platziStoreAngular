@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { ProductComponent } from './product/components/product/product.component';
 // import {HomeComponent} from './home/components/home/home.component';
-import { ProductsComponent } from './product/components/products/products.component';
 // import {ContactComponent} from './contact/components/contact/contact.component';
 // import {DemoComponent} from './demo/components/demo/demo.component';
 // import {BannerComponent} from './home/components/banner/banner.component';
