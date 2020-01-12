@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import { ProductService } from '../../../core/services/products/product.service';
 import {Product} from '../../../product.model';
-
+import { switchMap } from 'rxjs/operators';
+import {  Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,28 +11,36 @@ import {Product} from '../../../product.model';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  producto: Product;
+  producto$: Observable<Product>;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      console.log(params);
-      const id = params.id;
-      this.fetchProduct(id);
-      //   this.producto = this.productService.getProducto(id)
-      //  console.log(this.producto);
-    });
+   this.producto$ =  this.route.params
+    .pipe(
+      switchMap((params: Params) => {
+        return  this.productService.getProducto(params.id);
+      })
+    );
+    // .subscribe((product) => {
+      // clase 12 profesional
+       // this.producto = product;
+
+      // console.log(params);
+      // const id = params.id;
+      // this.fetchProduct(id);
+    // });
   }
-  fetchProduct(id: string) {
-    this.productService.getProducto(id)
-      .subscribe((producto) => {
-        console.log(producto);
-        this.producto = producto;
-      }, (err) => {console.error(`errro al obtener la información del producto ${err}`)});
-  }
+  // Lo comentamos en la clase 12 del profesional
+  // fetchProduct(id: string) {
+  //   this.productService.getProducto(id)
+  //     .subscribe((producto) => {
+  //       console.log(producto);
+  //       this.producto = producto;
+  //     }, (err) => {console.error(`errro al obtener la información del producto ${err}`)});
+  // }
   createProduct() {
     const newProduct: Product = {
       id: '222',
@@ -61,6 +70,15 @@ export class ProductDetailComponent implements OnInit {
 
       },(err) => {console.error(`èrror al borrar el producto ${err}`)})
 
+  }
+
+  getRandomUsers() {
+    this.productService.getRandomUsers()
+      .subscribe(users => {
+        console.log(users);
+      }, (err) => {
+          console.error(err);
+      });
   }
 
 

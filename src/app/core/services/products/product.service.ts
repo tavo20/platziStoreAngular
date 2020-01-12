@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from './../../../product.model';
 import { environment } from './../../../../environments/environment'
+import { Observable, throwError } from 'rxjs';
+import { map, catchError  } from 'rxjs/operators';
 
-
+interface User {
+  email: string;
+  gender: string;
+  phone: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +34,23 @@ export class ProductService {
   }
   deleteProduct(id: string) {
     return this.http.delete(`${environment.url_api}${id}`);
-  };
+  }
+  getRandomUsers(): Observable<User[]> {
+    return this.http.get('https://randomusersaasd.me/api/?results=2')
+    .pipe(
+      // catchError(error => {
+      //   return throwError('ups algo salio mal');
+      // }),
+      catchError(this.handleError),
+      map((response: any) => response.results as User[])
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+    return throwError('ups algo salio mal');
+
+  }
+
 
 }
