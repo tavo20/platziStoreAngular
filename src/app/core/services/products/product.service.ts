@@ -3,7 +3,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from './../../../product.model';
 import { environment } from './../../../../environments/environment'
 import { Observable, throwError } from 'rxjs';
-import { map, catchError  } from 'rxjs/operators';
+import { map, catchError, retry  } from 'rxjs/operators';
+import * as Sentry from "@sentry/browser";
+
 
 interface User {
   email: string;
@@ -36,11 +38,12 @@ export class ProductService {
     return this.http.delete(`${environment.url_api}${id}`);
   }
   getRandomUsers(): Observable<User[]> {
-    return this.http.get('https://randomusersaasd.me/api/?results=2')
+    return this.http.get('https://randomuser.me/api/?results=2')
     .pipe(
       // catchError(error => {
       //   return throwError('ups algo salio mal');
       // }),
+      retry(3),
       catchError(this.handleError),
       map((response: any) => response.results as User[])
     );
@@ -48,8 +51,12 @@ export class ProductService {
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);
+    Sentry.captureException(error);
     return throwError('ups algo salio mal');
+  }
 
+  getFile() {
+    return this.http.get('assets/files/test.txt', {responseType: 'text'});
   }
 
 

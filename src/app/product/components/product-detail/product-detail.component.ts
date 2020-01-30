@@ -4,7 +4,6 @@ import { ProductService } from '../../../core/services/products/product.service'
 import {Product} from '../../../product.model';
 import { switchMap } from 'rxjs/operators';
 import {  Observable } from 'rxjs';
-
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -12,9 +11,11 @@ import {  Observable } from 'rxjs';
 })
 export class ProductDetailComponent implements OnInit {
   producto$: Observable<Product>;
+  
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+  
   ) { }
 
   ngOnInit() {
@@ -80,6 +81,18 @@ export class ProductDetailComponent implements OnInit {
           console.error(err);
       });
   }
+
+  getFile() {
+    this.productService.getFile()
+      .subscribe((content) => {
+        console.log(content);
+      });
+  }
+   
+  // getFileReto() {
+  //   var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+  //   FileSaver.saveAs(blob, "hello world.txt");
+  // }
 
 
 }

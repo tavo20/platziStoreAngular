@@ -21,7 +21,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment} from './../environments/environment'
+import { environment} from './../environments/environment';
+import * as Sentry from "@sentry/browser";
+import { saveAs } from 'file-saver';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+
+Sentry.init({
+  dsn: "https://a4e18476f667451eb0e00673e3003700@sentry.io/1878670"
+});
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +55,11 @@ import { environment} from './../environments/environment'
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,4 +44,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  loginApi() {
+    this.authService.loginRestApi('gustavo.gustavo.com', '12345')
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 }
