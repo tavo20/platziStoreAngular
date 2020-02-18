@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './product/components/product-detail/prod
 import { LayoutComponent } from './layout/layout.component';
 import { AdminGuard } from './admin.guard';
 import { PreloadService } from './core/services/preload.service';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
