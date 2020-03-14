@@ -11,19 +11,22 @@ import { HoghlightDirective } from './directives/highlight/hoghlight.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './../material/material.module';
+import { FibonacciPipe } from './pipes/fibonacci.pipe';
 
 @NgModule({
   declarations: [
     ExponencialPipe,
     HoghlightDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FibonacciPipe
   ],
   exports: [
     ExponencialPipe,
     HoghlightDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FibonacciPipe
   ],
   imports: [
     CommonModule,

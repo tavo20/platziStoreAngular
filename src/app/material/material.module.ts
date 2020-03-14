@@ -36,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatButtonModule } from '@angular/material/button';
 
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -61,7 +62,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatGridListModule,
     LayoutModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -81,7 +83,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatGridListModule,
     LayoutModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule { }
