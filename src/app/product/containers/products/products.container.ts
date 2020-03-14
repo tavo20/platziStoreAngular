@@ -20,7 +20,7 @@ export class ProductsContainer implements OnInit {
         this.products = (productos);
         x.unsubscribe();
         console.log(productos);
-      }, (err) => {console.error(`error al obtener los productos ${err}`)});
+      }, (err) => {console.error(`error al obtener los productos ${JSON.stringify(err)}`)});
   }
   clickProduct(id: number) {
     console.log(`product ${id}`);

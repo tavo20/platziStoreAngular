@@ -45,7 +45,7 @@ Sentry.init({
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     SharedModule,
