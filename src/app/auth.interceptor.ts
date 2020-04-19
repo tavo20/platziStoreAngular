@@ -16,10 +16,10 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private addToken(request:HttpRequest<any>) {
-    // const token = this.tokenService.getToken();
-    // console.log(token);
-    const token = '123';
-    if(true) {
+    const token = this.tokenService.getToken();
+   console.log('token', token);
+    // const token = '123Hola';
+    if(token) {
       request = request.clone({ 
         setHeaders: {
           token,

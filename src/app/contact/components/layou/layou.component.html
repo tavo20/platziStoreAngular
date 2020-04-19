@@ -1,0 +1,11 @@
+<h4>Value {{ value$| async }}</h4>
+<app-list 
+[data]="salesList"
+(add)="addItem(salesList, $event)"
+ title = "lista 1">
+</app-list>
+
+<app-list
+ [data]="bList"
+  title = "lista 2"
+></app-list>

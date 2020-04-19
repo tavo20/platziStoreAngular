@@ -1,0 +1,10 @@
+:host {
+    margin-bottom: 50px;
+    display: flex;
+}
+
+@media screen and (max-width: 600px) {
+    :host {
+        display: block;
+    }
+}

@@ -38,7 +38,7 @@ export class ProductService {
     return this.http.delete(`${environment.url_api}${id}`);
   }
   getRandomUsers(): Observable<User[]> {
-    return this.http.get('https://randomuser.me/api/?results=2')
+    return this.http.get('https://randomuser.me/apiasd/?results=2')
     .pipe(
       // catchError(error => {
       //   return throwError('ups algo salio mal');
@@ -51,6 +51,7 @@ export class ProductService {
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);
+    //aca hacemos tranking de los errores.
     Sentry.captureException(error);
     return throwError('ups algo salio mal');
   }

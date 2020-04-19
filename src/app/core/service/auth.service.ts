@@ -38,14 +38,14 @@ export class AuthService {
   }
   loginRestApi(email: string, password: string) {
     return this.http.post('https://platzi-store.herokuapp.com/auth', {email, password})
-      // .pipe(
-      //   tap(
-      //     (data: {token: string}) => {
-      //       const token = data.token;
-      //       // No guardarlo en localStorage
-      //       this.token.savetoken(token);
-      //     }
-      //   )
-      // )
+      .pipe(
+        tap(
+          (data: {token: string}) => {
+            const token = data.token;
+            // No guardarlo en localStorage es mala practica
+            this.token.savetoken(token);
+          }
+        )
+      )
   }
 }

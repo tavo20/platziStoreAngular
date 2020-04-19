@@ -73,8 +73,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    // preloadingStrategy: PreloadAllModules
-    preloadingStrategy: PreloadService
+    // preloadingStrategy: PreloadAllModules | despues de la carga inicial carga todos los modulos
+    preloadingStrategy: PreloadService // | Solo carga los que tienen data en true
   })],
   exports: [RouterModule]
 })
